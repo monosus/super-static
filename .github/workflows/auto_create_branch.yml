@@ -24,7 +24,8 @@ jobs:
       - name: Extract prefix and generate branch name
         run: |
           PREFIX=""
-          LABELS=(${{ join(github.event.issue.labels.*.name, ' ') }})
+          LABELS_STR="${{ join(github.event.issue.labels.*.name, ' ') }}"
+          read -ra LABELS <<< "$LABELS_STR"
           for label in "${LABELS[@]}"; do
             if [[ "$label" == "enhancement" ]]; then
               PREFIX="feat"
@@ -41,6 +42,7 @@ jobs:
           BRANCH_NAME="${PREFIX:+$PREFIX_}issue-${{ github.event.issue.number }}_${ISSUE_TITLE}"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           echo "Branch name generated: $BRANCH_NAME"
+
 
       # Gitユーザー名とメールアドレスを設定
       - name: Set up Git identity
