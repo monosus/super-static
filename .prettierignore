@@ -1,0 +1,8 @@
+node_modules
+dist
+.storybook
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+**/*.html

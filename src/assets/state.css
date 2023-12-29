@@ -1,0 +1,16 @@
+@import '/src/assets/_css/extends.css' layer(state);
+
+@layer state {
+  [data-ui='modal'] {
+    position: fixed;
+    top: 0;
+  }
+
+  [data-ui='modal']:not(:target) {
+    left: 200vw;
+  }
+
+  [data-ui='modal']:target {
+    left: 0;
+  }
+}

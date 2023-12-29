@@ -1,0 +1,5 @@
+@import '/src/assets/_css/extends.css' layer(page);
+
+@layer page {
+  /* write your page or site style(without components) */
+}

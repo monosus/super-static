@@ -1,0 +1,50 @@
+# EXAMPLE USAGE:
+#
+#   Refer for explanation to following link:
+#   https://github.com/evilmartians/lefthook/blob/master/docs/configuration.md
+#
+# pre-push:
+#   commands:
+#     packages-audit:
+#       tags: frontend security
+#       run: yarn audit
+#     gems-audit:
+#       tags: backend security
+#       run: bundle audit
+#
+pre-commit:
+  parallel: false
+  commands:
+    lint:
+      tags: frontend style
+      glob: '*.{js,jsx,ts,tsx,md,yaml,yml,json,css,scss,less,html,htm}'
+      run: npm run check
+      stage_fixed: true
+
+    # eslint:
+    #   glob: '*.{js,ts,jsx,tsx}'
+    #   run: npx eslint --fix {staged_files}
+    # type-check:
+    #   glob: '*.{ts,tsx}'
+    #   run: tsc --noEmit -p tsconfig.json
+    # markup:
+    #   glob: '*.{tsx}'
+    #   run: npx markuplint --config .markuplintrc.yml --fix {staged_files}
+    # prettier:
+    #   glob: '*.{tsx,ts,js,jsx,css,html,json,md,yml}'
+    #   run: npx prettier -w  .
+#     rubocop:
+#       tags: backend style
+#       glob: "*.rb"
+#       exclude: "application.rb|routes.rb"
+#       run: bundle exec rubocop --force-exclusion {all_files}
+#     govet:
+#       tags: backend style
+#       files: git ls-files -m
+#       glob: "*.go"
+#       run: go vet {files}
+#   scripts:
+#     "hello.js":
+#       runner: node
+#     "any.go":
+#       runner: go run

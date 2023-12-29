@@ -1,0 +1,28 @@
+extends:
+  - 'markuplint:recommended'
+parser:
+  "\\.tsx$": '@markuplint/jsx-parser'
+specs:
+  "\\.tsx$": '@markuplint/react-spec'
+pretenders:
+  - selector: 'HtmlAppendedLink'
+    as: 'a'
+  - selector: 'DescriptionList'
+    as: 'dl'
+  - selector: 'ReferenceList'
+    as: 'dl'
+  - selector: 'BulletList'
+    as: 'li'
+  - selector: 'BasicDivision'
+    as: 'section'
+  - selector: 'FeaturedBox'
+    as: 'article'
+rules:
+  invalid-attr:
+    options:
+      allowAttrs:
+        - 'hx-boost'
+        - 'hx-get'
+        - 'hx-swap'
+        - 'hx-target'
+        - 'hx-trigger'

@@ -1,0 +1,13 @@
+@import '/src/assets/_css/extends.css' layer(theme);
+
+@layer theme {
+  /* write your thme  */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding: var(--sticky-elements-height);
+  }
+
+  h1 {
+    color: pink;
+  }
+}

@@ -1,0 +1,8 @@
+@import '/src/assets/_css/extends.css' layer(hotfix);
+
+@layer hotfix {
+  /* write your hotfix style */
+  h1 {
+    color: tomato;
+  }
+}

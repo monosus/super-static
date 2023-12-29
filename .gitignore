@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules
+dist
+styled-system
+src/components/index.ts
+src/components/recipe.ts
+__image_snapshots__
+storybook-static
+snapshot.spec.ts-snapshots
+vrt-test
+
