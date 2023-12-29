@@ -16,7 +16,6 @@ jobs:
 
       # 必要なラベルが存在するかチェック
       - name: Check for required labels
-        id: check_labels
         run: |
           LABELS="${{ join(github.event.issue.labels.*.name, ' ') }}"
           if [[ ! "$LABELS" =~ "enhancement" ]] && [[ ! "$LABELS" =~ "bug" ]] && [[ ! "$LABELS" =~ "documentation" ]]; then
@@ -26,7 +25,6 @@ jobs:
 
       # issueのラベルとタイトルからプレフィックスとブランチ名を生成
       - name: Extract prefix and generate branch name
-        id: extract_and_generate
         run: |
           PREFIX=""
           for label in $LABELS; do
@@ -40,7 +38,11 @@ jobs:
           BRANCH_NAME="${PREFIX}_issue-${{ github.event.issue.number }}_${ISSUE_TITLE}"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
-      # 以下のステップ（新しいブランチの作成、空のコミットの追加、ドラフトPRの作成、コメントの追加）は同じまま続けます
+      # Gitユーザー名とメールアドレスを設定
+      - name: Set up Git identity
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<email-address>"
 
       # 空のコミットを追加
       - name: Add empty commit
