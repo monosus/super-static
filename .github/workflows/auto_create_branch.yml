@@ -42,7 +42,7 @@ jobs:
           done
           echo $PREFIX
           ISSUE_TITLE=$(echo "${{ github.event.issue.title }}" | tr -s ' ' '-' | tr -cd '[:alnum:]-')
-          BRANCH_NAME="$PREFIX_issue-${{ github.event.issue.number }}_${ISSUE_TITLE}"
+          BRANCH_NAME="${PREFIX}_issue-${{ github.event.issue.number }}_${ISSUE_TITLE}"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           echo "Branch name generated: $BRANCH_NAME"
 
