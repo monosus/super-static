@@ -24,8 +24,8 @@ jobs:
       - name: Extract prefix and generate branch name
         run: |
           PREFIX=""
-          LABELS=${{ join(github.event.issue.labels.*.name, ' ') }}
-          for label in $LABELS; do
+          LABELS=(${{ join(github.event.issue.labels.*.name, ' ') }})
+          for label in "${LABELS[@]}"; do
             if [[ "$label" == "enhancement" ]]; then
               PREFIX="feat"
               break
