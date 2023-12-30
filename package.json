@@ -11,7 +11,9 @@
     "generate-component": "npx scaffdog generate",
     "biome": "biome check --apply .",
     "stylelint": "npx stylelint '**/*.css' --config .stylelintrc.json --fix && npx stylelint '**/*.css' --config .stylelintrc.json",
-    "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  npx markuplint --config .markuplintrc.yml src/**/*.tsx && npx prettier -w ."
+    "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  npx markuplint --config .markuplintrc.yml src/**/*.tsx && npx prettier -w .",
+    "generate:svg-sprite": "npx svg-sprite --config svg-sprite.json  src/assets/icons/*.svg",
+    "view-svg-sprite": "npx node-static public/assets/icons -i sprite.stack.html"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",

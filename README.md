@@ -64,6 +64,53 @@ commit時に自動でtype check eslint markup-lint prettierで整形とチェッ
 - 本番環境で`.html`を追加する。
 - aタグのかわりに使用する（予定)
 
+### アイコン(svg)
+
+アイコンはsvg spriteを使用する。ministaのIconコンポーネントは以下の点でデメリットがある。
+
+- 複数色を使用しているヴェクターイメージを期待通りに扱えない
+- css背景画像で使用できない
+
+アイコン自体はテキスト等でラベリングがない場合以外はAOMに挿入されないようにしたほうが良い。プレゼンテーションとしてのアイコンは`aria-hidden="true"`とするか背景画像としてcssで表示させることが望ましい。マークアップしてからわざわざaria-hidden属性を付与するのも避けたいため、基本的にはbefore/after疑似要素の背景画像として設置する。
+ライブラリとして[svg-sprite](https://github.com/svg-sprite/svg-sprite)を使用する。
+
+アイコンは`src/assets/icons`内に格納する。
+
+以下コマンドを用意
+
+svg sprite作成
+
+```bash
+npm run generate:svg-sprite
+```
+
+一覧をローカルサーバーで確認
+
+```bash
+npm run view-svg-sprite
+```
+
+#### 使用例
+
+（やはりアクセシビリティツリーからは除外したほうが管理し易い）
+
+```html
+<svg aria-label="plus icon">
+  <title>icon title</title>
+  <use href="/assets/icons/sprite.svg#plus" />
+</svg>
+```
+
+**推奨**
+
+```css
+.icon-plus::before {
+  /* ... */
+  background: url('/assets/icons/sprite.svg#plus') no-repeat;
+  content: '';
+}
+```
+
 ## Git issue branch Pull-Request
 
 ### 概要

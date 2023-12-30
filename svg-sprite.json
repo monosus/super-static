@@ -1,0 +1,14 @@
+{
+  "svg": {
+    "xmlDeclaration": false,
+    "doctypeDeclaration": false,
+    "dimensionAttributes": false
+  },
+  "mode": {
+    "stack": {
+      "dest": "./public/assets/icons/",
+      "sprite": "sprite.svg",
+      "example": true
+    }
+  }
+}
