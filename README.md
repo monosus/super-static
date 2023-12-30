@@ -111,6 +111,8 @@ npm run view-svg-sprite
 }
 ```
 
+svg-spriteを使用する場合cssでfillをコントロールすることが難しいため単色のアイコンの色を変更したい場合はministaのIconコンポーネントを使用する。
+
 ## Git issue branch Pull-Request
 
 ### 概要
