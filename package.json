@@ -8,12 +8,12 @@
     "preview": "minista preview",
     "generate:components-export-list": "node lib/generate-components-list.js init",
     "watch:components-export-list": "node lib/generate-components-list.js watch",
-    "generate-component": "npx scaffdog generate --force",
+    "generate-component": "scaffdog generate --force",
     "biome": "biome check --apply .",
-    "stylelint": "npx stylelint '**/*.css' --config .stylelintrc.json --fix && npx stylelint '**/*.css' --config .stylelintrc.json",
-    "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  npx markuplint --config .markuplintrc.yml src/**/*.tsx && npx prettier -w .",
-    "generate:svg-sprite": "npx svg-sprite --config svg-sprite.json  src/assets/icons/*.svg",
-    "view-svg-sprite": "npx node-static public/assets/icons -i sprite.stack.html"
+    "stylelint": "bunx stylelint '**/*.css' --config .stylelintrc.json --fix && bunx stylelint '**/*.css' --config .stylelintrc.json",
+    "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  bunx markuplint --config .markuplintrc.yml src/**/*.tsx && bunx prettier -w .",
+    "generate:svg-sprite": "bunx svg-sprite --config svg-sprite.json  src/assets/icons/*.svg",
+    "view-svg-sprite": "bunx node-static public/assets/icons -i sprite.stack.html"
   },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
@@ -45,5 +45,8 @@
     "chokidar": "^3.5.3",
     "htmx.org": "^1.9.10",
     "ts-pattern": "^5.0.6"
-  }
+  },
+  "trustedDependencies": [
+    "sharp"
+  ]
 }
