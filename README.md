@@ -12,19 +12,19 @@ commit時に自動でtype check eslint markup-lint prettierで整形とチェッ
 
 ## npm scripts
 
-`npm install` : インストール
+`bun i` : インストール
 
-`npm run dev` : ローカルサーバーでの開発
+`bun run dev` : ローカルサーバーでの開発
 
-`npm run build` : ビルド
+`bun run build` : ビルド
 
 `npm run generate:components-export-list` : コンポーネントリスト生成。src/components/index.ts,recipes.tsから一括インポートできるようにするため
 
-`npm run watch:components-export-list` : コンポーネント追加時にサーバーを止めたくないので監視
+`bun watch:components-export-list` : コンポーネント追加時にサーバーを止めたくないので監視
 
-`npm run generate-component` : scaffdogで必要ファイルを生成
+`bun generate-component` : scaffdogで必要ファイルを生成
 
-`npm run check` : tsc,biome,markuplint,stylelint,prettierを実行する
+`bun check` : tsc,biome,markuplint,stylelint,prettierを実行する
 
 ## コーディング方針
 
@@ -81,13 +81,13 @@ commit時に自動でtype check eslint markup-lint prettierで整形とチェッ
 svg sprite作成
 
 ```bash
-npm run generate:svg-sprite
+bun generate:svg-sprite
 ```
 
 一覧をローカルサーバーで確認
 
 ```bash
-npm run view-svg-sprite
+bun view-svg-sprite
 ```
 
 #### 使用例

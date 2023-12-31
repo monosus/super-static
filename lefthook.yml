@@ -18,7 +18,7 @@ pre-commit:
     lint:
       tags: frontend style
       glob: '*.{js,jsx,ts,tsx,md,yaml,yml,json,css,scss,less,html,htm}'
-      run: npm run check
+      run: bun check
       stage_fixed: true
 
     # eslint:
