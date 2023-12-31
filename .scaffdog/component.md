@@ -1,23 +1,24 @@
 ---
 name: 'component'
 root: '.'
-output: 'src/components'
+output: 'src'
 ignore: ['.']
 questions:
-  name: 'Please enter a componentName.'
+  subDir:
+    message: 'type of component do you create?(どの種類のコンポーネントを作成しますか？)'
+    choices:
+      - 'ui|ex:button,list,modal'
+      - 'layout|ex:header,footer,sidebar'
+  name: 'Please enter a componentName.(コンポーネントの名前を入力してください。ローワーキャメル)'
 ---
 
-# {{ inputs.name | pascal }}/index.tsx
+# components/{{ inputs.subDir | split "|" |  slice 0 1 }}/{{ inputs.name | pascal }}/index.tsx
 
 ```typescript
-
-import './{{ inputs.name | pascal }}.css'
-
 type {{ inputs.name | pascal }}Props = {
     children: React.ReactNode
   }
 
-export type Props = React.PropsWithChildren<{}>;
 
 const {{ inputs.name | pascal }} = (props: {{ inputs.name | pascal }}Props) => {
   const { children } = props
@@ -31,13 +32,23 @@ const {{ inputs.name | pascal }} = (props: {{ inputs.name | pascal }}Props) => {
 export default {{ inputs.name | pascal }}
 ```
 
-# {{ inputs.name | pascal }}/{{ inputs.name | pascal }}.css
+# components/{{ inputs.subDir | split "|" |  slice 0 1 }}/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.css
 
 ```css
-@layer components {
-.{{ inputs.name }} {
+@layer {{ inputs.subDir | split "|" |  slice 0 1 }} {
+  .{{ inputs.name | kebab }} {
 
-}
+  }
 }
 
+@layer state {
+  /* If this component has state */
+}
+```
+
+# assets/{{ inputs.subDir | split "|" |  slice 0 1 }}.css
+
+```css
+{{ read output.abs }}
+@import '/src/components/{{ inputs.subDir | split "|" |  slice 0 1 }}/{{ inputs.name | pascal }}/{{ inputs.name | pascal }}.css';
 ```
