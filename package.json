@@ -3,12 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run watch:components-export-list & minista",
+    "dev": "npm run watch:components-export-list & minista --open",
     "build": "npm run generate:components-export-list && minista build",
     "preview": "minista preview",
-    "generate:components-export-list": "node --loader ts-node/esm lib/component-list.ts init",
-    "watch:components-export-list": "node --loader ts-node/esm lib/component-list.ts watch",
-    "generate-component": "npx scaffdog generate",
+    "generate:components-export-list": "node lib/generate-components-list.js init",
+    "watch:components-export-list": "node lib/generate-components-list.js watch",
+    "generate-component": "npx scaffdog generate --force",
     "biome": "biome check --apply .",
     "stylelint": "npx stylelint '**/*.css' --config .stylelintrc.json --fix && npx stylelint '**/*.css' --config .stylelintrc.json",
     "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  npx markuplint --config .markuplintrc.yml src/**/*.tsx && npx prettier -w ."
