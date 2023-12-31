@@ -10,11 +10,8 @@ export default function ({ url, title, children }: GlobalProps) {
 				<link rel="stylesheet" href="/src/assets/base.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/tokens.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/theme.css" media="screen" />
-				<link
-					rel="stylesheet"
-					href="/src/assets/components.css"
-					media="screen"
-				/>
+				<link rel="stylesheet" href="/src/assets/ui.css" media="screen" />
+				<link rel="stylesheet" href="/src/assets/layout.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/page.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/hotfix.css" media="screen" />
 			</Head>
