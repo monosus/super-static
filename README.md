@@ -1,4 +1,4 @@
-# boiler plate: minista-panda-storybook
+# boiler plate: minista and linting
 
 ** いい感じに開発しながら品質の高い納品を目指す。 **
 
