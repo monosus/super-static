@@ -10,8 +10,8 @@
     "watch:components-export-list": "node lib/generate-components-list.js watch",
     "generate-component": "scaffdog generate --force",
     "biome": "biome check --apply .",
-    "stylelint": "bunx stylelint '**/*.css' --config .stylelintrc.json --fix && bunx stylelint '**/*.css' --config .stylelintrc.json",
-    "check": "tsc --noEmit -p tsconfig.json && npm run biome && npm run stylelint &&  bunx markuplint --config .markuplintrc.yml src/**/*.tsx && bunx prettier -w .",
+    "stylelint": "stylelint '**/*.css' --config .stylelintrc.json --fix && stylelint '**/*.css' --config .stylelintrc.json",
+    "check": "tsc --noEmit -p tsconfig.json && bun biome && bun stylelint && markuplint --config .markuplintrc.yml src/**/*.tsx && prettier -w .",
     "generate:svg-sprite": "bunx svg-sprite --config svg-sprite.json  src/assets/icons/*.svg",
     "view-svg-sprite": "bunx node-static public/assets/icons -i sprite.stack.html"
   },
