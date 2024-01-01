@@ -1,3 +1,3 @@
 module.exports = {
-  plugins: [require('postcss-extend')()],
+	plugins: [require("postcss-extend")()],
 };
