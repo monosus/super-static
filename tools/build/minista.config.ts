@@ -20,4 +20,9 @@ export default defineConfig({
 			},
 		},
 	},
+	vite: {
+		css: {
+			postcss: "./tools/build/postcss.config.js",
+		},
+	},
 });
