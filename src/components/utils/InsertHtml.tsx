@@ -1,8 +1,8 @@
 import { Comment } from "minista";
 import React from "react";
-import buildConfig from "../../../minista.config";
+// import buildConfig from "../../../minista.config";
 import processHref from "./processHref";
-const { base } = buildConfig;
+// const { base } = buildConfig;
 
 type HxTriggerEvent = "load" | "revealed" | "intersect";
 interface HxTriggerOptions {
@@ -45,7 +45,7 @@ function hxTriggerAttribute(options: HxTriggerOptions): string {
 const InsertHtml = ({
 	filePath,
 	shouldAppendHtml = true,
-	baseDir = base ?? "",
+	baseDir = "",
 	hxTrigger = { event: "load" },
 	partName,
 }: InsertHtmlProps) => {

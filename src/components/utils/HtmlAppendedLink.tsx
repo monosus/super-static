@@ -1,5 +1,5 @@
 import React from "react";
-import buildConfig from "../../../minista.config";
+// import buildConfig from "../../../tools/build/minista.config";
 import processHref from "./processHref";
 // const { base } = buildConfig;
 /**
