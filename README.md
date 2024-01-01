@@ -5,8 +5,8 @@
 ## pre-commit
 
 コード規約を守るため
-npm install後に以下を実施して下さい。
-`npx lefthook add pre-commit`
+bun install後に以下を実施して下さい。
+`bunx lefthook add pre-commit`
 
 commit時に自動でtype check eslint markup-lint prettierで整形とチェックをします。
 

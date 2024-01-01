@@ -1,11 +1,11 @@
 {
-  "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "editorconfig.editorconfig",
-    "streetsidesoftware.code-spell-checker",
-    "usernamehw.errorlens",
-    "yusukehirao.vscode-markuplint",
-    "esbenp.prettier-vscode"
-  ],
-  "unwantedRecommendations": []
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"editorconfig.editorconfig",
+		"streetsidesoftware.code-spell-checker",
+		"usernamehw.errorlens",
+		"yusukehirao.vscode-markuplint",
+		"esbenp.prettier-vscode"
+	],
+	"unwantedRecommendations": []
 }

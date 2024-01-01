@@ -18,7 +18,7 @@
     }
   },
   "exclude": ["./dist/", "./public/", "./src/components/index.ts"],
-  "include": ["minista.config.ts", "./src/**/*", "lib", "playwright.config.ts"],
+  "include": ["minista.config.ts", "./src/**/*", "src/lib", "playwright.config.ts"],
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"

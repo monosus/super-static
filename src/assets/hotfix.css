@@ -3,6 +3,8 @@
 @layer hotfix {
   /* write your hotfix style */
   h1 {
+    @extend %test-extend;
+
     color: tomato;
   }
 }

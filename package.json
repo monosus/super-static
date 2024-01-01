@@ -3,16 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run watch:components-export-list & minista --open",
-    "build": "npm run generate:components-export-list && minista build",
+    "dev": "bun watch:components-export-list & minista -c tools/build/minista.config.ts --open",
+    "build": "bun generate:components-export-list && minista build -c tools/build/minista.config.ts",
     "preview": "minista preview",
-    "generate:components-export-list": "node lib/generate-components-list.js init",
-    "watch:components-export-list": "node lib/generate-components-list.js watch",
+    "generate:components-export-list": "bun src/lib/generate-components-list.js init",
+    "watch:components-export-list": "bun src/lib/generate-components-list.js watch",
     "generate-component": "scaffdog generate --force",
-    "biome": "biome check --apply .",
-    "stylelint": "stylelint '**/*.css' --config .stylelintrc.json --fix && stylelint '**/*.css' --config .stylelintrc.json",
-    "check": "tsc --noEmit -p tsconfig.json && bun biome && bun stylelint && markuplint --config .markuplintrc.yml src/**/*.tsx && prettier -w .",
-    "generate:svg-sprite": "bunx svg-sprite --config svg-sprite.json  src/assets/icons/*.svg",
+    "check": "bun tools/lint/linting.ts",
+    "generate:svg-sprite": "bunx svg-sprite --config tools/build/svg-sprite.json  src/assets/icons/*.svg",
     "view-svg-sprite": "bunx node-static public/assets/icons -i sprite.stack.html"
   },
   "devDependencies": {
