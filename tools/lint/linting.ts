@@ -11,6 +11,7 @@ function runCommand(command: string, commandName: string): Promise<void> {
 			}
 			if (stderr) {
 				console.error(`標準エラー (${commandName}): ${stderr}`);
+				reject(new Error(stderr));
 				resolve();
 				return;
 			}
@@ -21,27 +22,33 @@ function runCommand(command: string, commandName: string): Promise<void> {
 }
 
 async function main() {
-	await runCommand(
-		"bunx biome check --config-path ./tools/lint/ --apply .",
-		"biome",
-	);
-	await runCommand(
-		"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json --fix",
-		"stylelint-fix",
-	);
-	await runCommand(
-		"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json",
-		"stylelint",
-	);
-	await runCommand("bunx tsc --noEmit -p tsconfig.json", "tsc");
-	await runCommand(
-		"bunx markuplint --config tools/lint/.markuplintrc.yml src/**/*.tsx",
-		"markuplint",
-	);
-	await runCommand(
-		"bunx prettier --config tools/lint/.prettierrc --ignore-path tools/lint/.prettierignore -w .",
-		"prettier",
-	);
+	try {
+		await Promise.all([
+			runCommand(
+				"bunx biome check --config-path ./tools/lint/ --apply .",
+				"biome",
+			),
+			runCommand(
+				"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json --fix",
+				"stylelint-fix",
+			),
+			runCommand(
+				"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json",
+				"stylelint",
+			),
+			runCommand("bunx tsc --noEmit -p tsconfig.json", "tsc"),
+			runCommand(
+				"bunx markuplint --config tools/lint/.markuplintrc.yml src/**/*.tsx",
+				"markuplint",
+			),
+			runCommand(
+				"bunx prettier --config tools/lint/.prettierrc --ignore-path tools/lint/.prettierignore -w ./**/*.css",
+				"prettier",
+			),
+		]);
+	} catch (error) {
+		console.error(`実行中のエラー: ${error.message}`);
+	}
 }
 
-main().catch((error) => console.error(`実行中のエラー: ${error.message}`));
+main();
