@@ -1,6 +1,10 @@
 @import '/src/assets/_css/extends.css' layer(state);
 
 @layer state {
+  :is([data-bg='lazy'], [data-bg='in-view']) {
+    background-image: unset;
+  }
+
   [data-ui='modal'] {
     position: fixed;
     top: 0;
