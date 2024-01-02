@@ -1,3 +1,3 @@
-@layer reset,token,theme,ui,layout,state,page,hotfix;
+@layer reset,token,theme,ui,layout,page,state,hotfix;
 
 @import '/src/assets/_css/reset.css' layer(reset);
