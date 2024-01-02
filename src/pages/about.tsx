@@ -1,14 +1,15 @@
 import type { Metadata } from "minista";
+
 import HtmlAppendedLink from "~/components/utils/HtmlAppendedLink";
 export const metadata: Metadata = {
-	title: "Home",
+	title: "About",
 };
 
 export default function () {
 	return (
 		<>
-			<h1>index</h1>
-			<HtmlAppendedLink href="/about">go about</HtmlAppendedLink>
+			<h1>About</h1>
+			<HtmlAppendedLink href="/">go Home</HtmlAppendedLink>
 		</>
 	);
 }

@@ -14,11 +14,14 @@ export default function ({ url, title, children }: GlobalProps) {
 				<link rel="stylesheet" href="/src/assets/layout.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/page.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/hotfix.css" media="screen" />
+				<script type="module" src="/src/assets/entry.ts"></script>
 			</Head>
 			{url === "/" ? (
-				<div className="home">{children}</div>
+				<div className="home" hx-boost="true">
+					{children}
+				</div>
 			) : (
-				<div>{children}</div>
+				<div hx-boost="true">{children}</div>
 			)}
 		</>
 	);
