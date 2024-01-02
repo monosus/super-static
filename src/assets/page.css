@@ -2,4 +2,8 @@
 
 @layer page {
   /* write your page or site style(without components) */
+  .image-1 {
+    height: 700px;
+    background-image: url('https://images.unsplash.com/photo-1483197452165-7abc4b248905?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D');
+  }
 }
