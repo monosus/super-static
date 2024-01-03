@@ -1,5 +1,10 @@
 @layer tokens {
   :root {
+    --color-white: #fff;
     --sticky-elements-height: 90px;
+    --modal-width: 40ch;
+    --modal-height: 70vh;
+    --modal-background-color: var(--color-white);
+    --modal-backdrop-background-color: rgb(0 0 0 / 50%);
   }
 }

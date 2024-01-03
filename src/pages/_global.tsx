@@ -1,7 +1,8 @@
 import type { GlobalProps } from "minista";
 import { Head } from "minista";
+import { Modal } from "~/components/";
 
-export default function ({ url, title, children }: GlobalProps) {
+export default function ({ url, title, children, modal }: GlobalProps) {
 	return (
 		<>
 			<Head>
@@ -16,19 +17,24 @@ export default function ({ url, title, children }: GlobalProps) {
 				<link rel="stylesheet" href="/src/assets/state.css" media="screen" />
 				<link rel="stylesheet" href="/src/assets/hotfix.css" media="screen" />
 				<script src="/src/assets/entry.ts" type="module" />
-
-				{/* <script src="/assets/ga.js" defer /> */}
-
-				<script type="text/javascript">
-					console.log('This script is a normal script tag.');
-				</script>
 			</Head>
 			{url === "/" ? (
-				<div className="home" hx-boost="true">
+				// hx-boost: https://htmx.org/attributes/hx-boost/
+				<div className="home faux-body" hx-boost="true" hx-history-elt="this">
 					{children}
 				</div>
+				// urlが/inc/**/*の場合はfaux-bodyをつけない
+			) : url.match(/^\/include\//) ? (
+				<div className="include">{children}</div>
 			) : (
-				<div hx-boost="true">{children}</div>
+				<div className="faux-body" hx-boost="true" hx-history-elt="this">
+					{children}
+				</div>
+			)}
+			{modal && (
+				<>
+					<Modal id="modal" />
+				</>
 			)}
 		</>
 	);
