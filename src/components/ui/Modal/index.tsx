@@ -1,14 +1,15 @@
 import InsertHtml from "~/components/utils/InsertHtml";
 type ModalProps = {
-	children: React.ReactNode;
 	id: string;
+	as?: React.ElementType;
 };
 
 const Modal = (props: ModalProps) => {
-	const { id } = props;
+	const { id, as } = props;
+	const Tag = as || "div";
 	return (
 		<>
-			<div id={id} className="modal">
+			<Tag id={id} className="modal">
 				<a href="#hide-modal" className="modal-backdrop">
 					<span>close</span>
 				</a>
@@ -18,7 +19,7 @@ const Modal = (props: ModalProps) => {
 					</a>
 					<div id="modal-inner-target" />
 				</div>
-			</div>
+			</Tag>
 		</>
 	);
 };
