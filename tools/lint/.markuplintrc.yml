@@ -26,3 +26,4 @@ rules:
         - 'hx-swap'
         - 'hx-target'
         - 'hx-trigger'
+        - 'hx-history-elt'
