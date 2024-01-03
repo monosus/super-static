@@ -15,4 +15,11 @@ interface HxAttributes {
 	"hx-get"?: string;
 	"hx-trigger"?: string;
 	"hx-boost"?: string;
+	"hx-history-elt"?: string;
+}
+
+declare global {
+	interface Document {
+		__defineOriginalHashes?: () => void;
+	}
 }
