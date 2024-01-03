@@ -1,9 +1,10 @@
 import type { Metadata } from "minista";
 
+import { Modal } from "~/components/";
 import HtmlAppendedLink from "~/components/utils/HtmlAppendedLink";
-import demoHtml from "../../public/assets/demo.html?raw";
 export const metadata: Metadata = {
 	title: "About",
+	modal: true,
 };
 
 export default function () {
@@ -12,6 +13,24 @@ export default function () {
 			<h1 className="image load-bg" style={{ height: "400vh" }}>
 				About
 			</h1>
+
+			<a
+				href="#modal"
+				hx-get="/include/inc"
+				hx-target="#modal-inner-target"
+				hx-swap="innerHtml"
+			>
+				open modal
+			</a>
+			<a
+				href="#modal"
+				hx-get="/include/inc2"
+				hx-target="#modal-inner-target"
+				hx-swap="innerHtml"
+			>
+				open modal
+			</a>
+
 			<h1 className="image-1" data-bg="in-view">
 				About
 			</h1>

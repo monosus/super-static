@@ -8,7 +8,14 @@ export default function () {
 	return (
 		<>
 			<h1>index</h1>
-			<HtmlAppendedLink href="/about">go about</HtmlAppendedLink>
+			<div>
+				<HtmlAppendedLink
+					href="/about"
+					// hx-boost="true"
+				>
+					go about
+				</HtmlAppendedLink>
+			</div>
 		</>
 	);
 }
