@@ -1,1 +1,6 @@
 @import '/src/assets/_css/extends.css' layer(layout);
+
+.faux-body,
+body > div:first-of-type {
+  @extend %faux-body;
+}
