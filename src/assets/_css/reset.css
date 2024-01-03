@@ -7,7 +7,7 @@
 }
 
 :where([hidden]:not([hidden='until-found'])) {
-  display: none !important;
+  display: none;
 }
 
 :where(html) {

@@ -16,6 +16,10 @@
     inset: 0;
     opacity: 0;
   }
+
+  :where(.modal) [hidden] {
+    display: initial;
+  }
 }
 
 @layer state {
