@@ -7,12 +7,12 @@
 
   .modal-body {
     position: absolute;
-    width: 70vw;
-    height: 70vh;
+    width: var(--modal-width);
+    height: var(--modal-height);
     margin: auto;
 
     /* todo modal style */
-    background-color: white;
+    background-color: var(--modal-background-color);
     inset: 0;
     opacity: 0;
   }
@@ -26,12 +26,12 @@
 
   .modal:target .modal-body {
     opacity: 1;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .modal:target > .modal-backdrop {
     overflow: auto;
-    background-color: rgb(0 0 0 / 50%);
+    background-color: var(--modal-backdrop-background-color);
     inset: 0;
     scroll-behavior: smooth;
   }
