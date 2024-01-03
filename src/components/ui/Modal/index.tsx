@@ -4,17 +4,18 @@ type ModalProps = {
 	as?: React.ElementType;
 };
 
+const closeHref = "#";
 const Modal = (props: ModalProps) => {
 	const { id, as } = props;
 	const Tag = as || "div";
 	return (
 		<>
 			<Tag id={id} className="modal">
-				<a href="#hide-modal" className="modal-backdrop">
+				<a href={closeHref} className="modal-backdrop" hidden>
 					<span>close</span>
 				</a>
 				<div className="modal-body">
-					<a className="modal-close" href="#hide-modal">
+					<a className="modal-close" href={closeHref} hidden>
 						close
 					</a>
 					<div id="modal-inner-target" />

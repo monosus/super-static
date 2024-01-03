@@ -3,14 +3,13 @@ declare global {
 		__defineOriginalHashes?: () => void;
 	}
 }
-
 export class ModalHelper {
-	modalDepth: number; // この行を追加
-	focusableElements: string;
+	modalDepth: number;
+	readonly focusableElements: string =
+		"a, button:not([hidden]), input, select, textarea";
 
 	constructor() {
-		this.modalDepth = 1;
-		this.focusableElements = "a, button:not([hidden]), input, select, textarea";
+		this.modalDepth = 0;
 		this.init();
 	}
 
@@ -37,7 +36,6 @@ export class ModalHelper {
 						e.closest(".modal") === target
 							? parseInt(e.dataset.originalTabIndex || "0", 10)
 							: -1;
-					// parseIntの結果がNaNの場合は-1を代入
 					if (Number.isNaN(e.tabIndex)) {
 						e.tabIndex = -1;
 					}
@@ -55,7 +53,6 @@ export class ModalHelper {
 			e.tabIndex = e.closest(".modal")
 				? -1
 				: parseInt(e.dataset.originalTabIndex || "0", 10);
-			// parseIntの結果がNaNの場合は0を代入
 			if (Number.isNaN(e.tabIndex)) {
 				e.tabIndex = 0;
 			}
@@ -64,12 +61,13 @@ export class ModalHelper {
 
 	modalClose(e: Event) {
 		e.preventDefault();
-		if (this.modalDepth) {
+		if (this.modalDepth > 0) {
 			do {
 				history.back();
-				console.log("back");
-			} while (--this.modalDepth);
-		} else location.hash = "#";
+			} while (--this.modalDepth > 0);
+		} else {
+			location.hash = "#";
+		}
 	}
 
 	init() {
@@ -78,7 +76,6 @@ export class ModalHelper {
 				value: () => {
 					for (const e of this.getFocusable()) {
 						if (e.dataset.originalTabIndex === undefined) {
-							// tabIndexを文字列に変換してdatasetに設定
 							e.dataset.originalTabIndex = (e.tabIndex || 0).toString();
 						}
 					}
@@ -90,20 +87,15 @@ export class ModalHelper {
 
 		window.addEventListener("hashchange", this.checkHash.bind(this));
 		this.checkHash();
-		this.modalDepth = 0;
 
 		document.addEventListener("keydown", (e) => {
 			const target = this.getHashModal();
 			if (!target || e.key !== "Escape") return;
-			console.log(this);
 			this.modalClose(e);
 		});
 
-		// イベント委譲を使用してmodal-closeとmodal-backdropのクリックイベントを処理
 		document.addEventListener("click", (e) => {
 			const target = e.target as Element;
-
-			// クリックされた要素が.modal-closeまたは.modal-backdropに一致するか確認
 			if (target.matches(".modal-close") || target.matches(".modal-backdrop")) {
 				this.modalClose(e);
 			}
