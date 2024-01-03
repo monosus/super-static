@@ -17,7 +17,7 @@
       "~/*": ["./src/*"]
     }
   },
-  "exclude": ["./dist/", "./public/", "./src/components/index.ts"],
+  "exclude": ["./node_modules/","./dist/", "./public/", "./src/components/index.ts"],
   "include": ["minista.config.ts", "./src/**/*", "src/lib", "playwright.config.ts"],
   "ts-node": {
     "esm": true,

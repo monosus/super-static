@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 	modal: true,
 };
 
+const modalId = "#modal";
 export default function () {
 	return (
 		<>
@@ -15,7 +16,7 @@ export default function () {
 			</h1>
 
 			<a
-				href="#modal"
+				href={modalId}
 				hx-get="/include/inc"
 				hx-target="#modal-inner-target"
 				hx-swap="innerHtml"
@@ -23,7 +24,7 @@ export default function () {
 				open modal
 			</a>
 			<a
-				href="#modal"
+				href={modalId}
 				hx-get="/include/inc2"
 				hx-target="#modal-inner-target"
 				hx-swap="innerHtml"
