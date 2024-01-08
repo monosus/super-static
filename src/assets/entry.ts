@@ -1,22 +1,22 @@
 import { updateDataBg } from "./modules/background-image-lazy-load";
+import { setupDialogManagerObserver } from "./modules/dialog";
 import { loadScript } from "./modules/load-script";
-import { ModalHelper } from "./modules/modal-helper";
-let modalHelper: ModalHelper | null = null;
+import "./modules/popover-helper";
+
 window.addEventListener("load", async () => {
 	await loadScript("/assets/ga.js");
 	updateDataBg();
 	if (
 		document.querySelector(
-			"[hx-boost], [hx-get], [hx-post], [hx-put], [hx-delete], [hx-patch]",
+			"[data-hx-boost], [data-hx-get], [data-hx-post], [data-hx-put], [data-hx-delete], [data-hx-patch]",
 		)
 	) {
 		await import("./modules/htmx");
 	}
+	if (document.querySelector("dialog")) {
+		setupDialogManagerObserver();
+	}
 	if (document.querySelector(".modal")) {
-		if (!modalHelper) {
-			const { ModalHelper } = await import("./modules/modal-helper");
-			modalHelper = new ModalHelper();
-		}
 	}
 });
 
@@ -25,9 +25,5 @@ window.addEventListener("htmx:afterSwap", async (e: Event) => {
 	updateDataBg();
 	if (target.tagName === "BODY") {
 		await loadScript("/assets/ga.js");
-		if (!modalHelper) {
-			const { ModalHelper } = await import("./modules/modal-helper");
-			modalHelper = new ModalHelper();
-		}
 	}
 });

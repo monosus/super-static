@@ -19,15 +19,15 @@ export default function ({ url, title, children, modal }: GlobalProps) {
 				<script src="/src/assets/entry.ts" type="module" />
 			</Head>
 			{url === "/" ? (
-				// hx-boost: https://htmx.org/attributes/hx-boost/
-				<div className="home faux-body" hx-boost="true" hx-history-elt="this">
+				// data-hx-boost: https://htmx.org/attributes/data-hx-boost/
+				<div className="home faux-body" data-hx-boost="true">
 					{children}
 				</div>
 				// urlが/inc/**/*の場合はfaux-bodyをつけない
 			) : url.match(/^\/include\//) ? (
 				<div className="include">{children}</div>
 			) : (
-				<div className="faux-body" hx-boost="true" hx-history-elt="this">
+				<div className="faux-body" data-hx-boost="true">
 					{children}
 				</div>
 			)}

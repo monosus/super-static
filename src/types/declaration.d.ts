@@ -5,17 +5,21 @@ declare namespace JSX {
 			HTMLElement
 		>;
 		div: React.DetailedHTMLProps<
-			React.HTMLAttributes<HTMLDivElement> & HxAttributes,
+			React.HTMLAttributes<HTMLDivElement> &
+				HxAttributes & {
+					popover?: "auto" | "manual";
+				},
 			HTMLDivElement
 		>;
+		button: React.DetailedHTMLProps<
+			React.ButtonHTMLAttributes<HTMLButtonElement> & {
+				popoverTarget?: string;
+				popover?: string;
+				popoverTargetAction?: "hide" | "show" | "toggle";
+			},
+			HTMLButtonElement
+		>;
 	}
-}
-
-interface HxAttributes {
-	"hx-get"?: string;
-	"hx-trigger"?: string;
-	"hx-boost"?: string;
-	"hx-history-elt"?: string;
 }
 
 declare global {

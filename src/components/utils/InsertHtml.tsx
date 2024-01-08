@@ -57,8 +57,8 @@ const InsertHtml = ({
 		<>
 			{partName != null && <Comment text={`#${partName}`} />}
 			<include-file
-				hx-get={processedHref}
-				hx-trigger={hxTriggerAttribute(hxTrigger)}
+				data-hx-get={processedHref}
+				data-hx-trigger={hxTriggerAttribute(hxTrigger)}
 			/>
 			{partName != null && <Comment text={`/ #${partName}`} />}
 		</>
