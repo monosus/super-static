@@ -1,4 +1,3 @@
-import InsertHtml from "~/components/utils/InsertHtml";
 type ModalProps = {
 	id: string;
 	as?: React.ElementType;
