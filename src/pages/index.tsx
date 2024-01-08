@@ -39,7 +39,6 @@ export default function () {
 			<div style={{ height: "60vh" }} />
 			<button
 				type="button"
-				popoverTarget="dummy"
 				data-js-dialog="dummy"
 				data-hx-trigger="load"
 				data-hx-get="/include/inc"

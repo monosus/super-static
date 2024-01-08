@@ -1,11 +1,7 @@
 const inc = () => {
 	return (
 		<>
-			<dialog
-				id="dummy"
-				// popover="auto"
-				// data-modal="true"
-			>
+			<dialog data-js-dialog="dummy">
 				<div>
 					<button type="button" data-js-dialog="dummy">
 						close dialog!!
@@ -33,7 +29,7 @@ const inc = () => {
 				</div>
 			</dialog>
 			<dialog
-				id="pop2"
+				data-js-dialog="pop2"
 				// popover="manual"
 			>
 				<header>

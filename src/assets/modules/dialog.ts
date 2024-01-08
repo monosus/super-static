@@ -66,7 +66,9 @@ class DialogManager {
 	};
 
 	private toggleDialog(dialogId: string): void {
-		const modal = document.getElementById(dialogId) as HTMLDialogElement | null;
+		const modal = document.querySelector(
+			`dialog[data-js-dialog="${dialogId}"]`,
+		) as HTMLDialogElement | null;
 		if (modal) {
 			if (modal.open) {
 				modal.close();
