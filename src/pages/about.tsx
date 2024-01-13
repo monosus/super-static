@@ -11,30 +11,27 @@ const modalId = "#modal";
 export default function () {
 	return (
 		<>
-			<h1 className="image load-bg" style={{ height: "400vh" }}>
-				About
-			</h1>
+			<main>
+				<h1 className="image load-bg" style={{ height: "400vh" }}>
+					About
+				</h1>
+				<button type="button" popoverTarget="d1">
+					open d1
+				</button>
+				<div id="d1" popover="manual">
+					d1
+					<a href="http://" target="_blank" rel="noopener noreferrer">
+						link
+					</a>
+					<button type="button" popoverTarget="d1" popoverTargetAction="hide">
+						close d1
+					</button>
+				</div>
 
-			<a
-				href={modalId}
-				hx-get="/include/inc"
-				hx-target="#modal-inner-target"
-				hx-swap="innerHtml"
-			>
-				open modal
-			</a>
-			<a
-				href={modalId}
-				hx-get="/include/inc2"
-				hx-target="#modal-inner-target"
-				hx-swap="innerHtml"
-			>
-				open modal
-			</a>
-
-			<h1 className="image-1" data-bg="in-view">
-				About
-			</h1>
+				<h1 className="image-1" data-bg="in-view">
+					About
+				</h1>
+			</main>
 			<HtmlAppendedLink href="/">go Home</HtmlAppendedLink>
 		</>
 	);

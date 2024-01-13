@@ -17,13 +17,4 @@ pretenders:
     as: 'section'
   - selector: 'FeaturedBox'
     as: 'article'
-rules:
-  invalid-attr:
-    options:
-      allowAttrs:
-        - 'hx-boost'
-        - 'hx-get'
-        - 'hx-swap'
-        - 'hx-target'
-        - 'hx-trigger'
-        - 'hx-history-elt'
+

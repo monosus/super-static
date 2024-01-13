@@ -2,9 +2,14 @@
   :root {
     --color-white: #fff;
     --sticky-elements-height: 90px;
-    --modal-width: 40ch;
+    --modal-width: min(70vw, 70ch);
     --modal-height: 70vh;
     --modal-background-color: var(--color-white);
     --modal-backdrop-background-color: rgb(0 0 0 / 50%);
+    --card-padding: 1rem;
+  }
+
+  :where(dialog, [popover]:popover-open)::backdrop {
+    --modal-backdrop-background-color: rgb(0 0 0 / 15%);
   }
 }

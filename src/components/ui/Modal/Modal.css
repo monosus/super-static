@@ -1,54 +1,23 @@
 @layer ui {
-  .modal,
-  .modal-backdrop {
-    position: fixed;
-    left: 200vw;
-  }
-
-  .modal-body {
-    position: absolute;
+  dialog {
+    overflow: auto;
     width: var(--modal-width);
-    height: var(--modal-height);
+    max-height: var(--modal-height);
     margin: auto;
-
-    /* todo modal style */
-    background-color: var(--modal-background-color);
     inset: 0;
-    opacity: 0;
   }
 
-  :where(.modal) [hidden] {
-    display: initial;
+  dialog > div {
+    padding: var(--card-padding);
+  }
+
+  :where(dialog)::backdrop {
+    background-color: var(--modal-backdrop-background-color);
   }
 }
 
 @layer state {
-  /* If this component has state */
-  .modal:target {
-    inset: 0;
-  }
-
-  .modal:target .modal-body {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-  }
-
-  .modal:target > .modal-backdrop {
-    overflow: auto;
-    background-color: var(--modal-backdrop-background-color);
-    inset: 0;
-    scroll-behavior: smooth;
-  }
-
-  .modal-backdrop:not(:focus) > span {
-    @extend %visually-hidden;
-  }
-
-  .modal-backdrop:focus > span {
-    position: absolute;
-    top: 1em;
-    left: 1em;
-    padding: 0.5em 1em;
-    outline: 5px auto Highlight;
+  dialog:not([open]) {
+    overflow: hidden;
   }
 }

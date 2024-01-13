@@ -22,32 +22,41 @@ function runCommand(command: string, commandName: string): Promise<void> {
 }
 
 async function main() {
-	try {
-		await Promise.all([
-			runCommand(
-				"bunx biome check --config-path ./tools/lint/ --apply .",
-				"biome",
-			),
-			runCommand(
-				"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json --fix",
-				"stylelint-fix",
-			),
-			runCommand(
-				"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json",
-				"stylelint",
-			),
-			runCommand("bunx tsc --noEmit -p tsconfig.json", "tsc"),
-			runCommand(
-				"bunx markuplint --config tools/lint/.markuplintrc.yml src/**/*.tsx",
-				"markuplint",
-			),
-			runCommand(
-				"bunx prettier --config tools/lint/.prettierrc --ignore-path tools/lint/.prettierignore -w ./**/*.css",
-				"prettier",
-			),
-		]);
-	} catch (error) {
-		console.error(`実行中のエラー: ${error.message}`);
+	const results = await Promise.allSettled([
+		runCommand(
+			"bunx biome check --config-path ./tools/lint/ --apply .",
+			"biome",
+		),
+		runCommand(
+			"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json --fix",
+			"stylelint-fix",
+		),
+		runCommand(
+			"bunx stylelint '**/*.css' --config tools/lint/.stylelintrc.json",
+			"stylelint",
+		),
+		runCommand("bunx tsc --noEmit -p tsconfig.json", "tsc"),
+		runCommand(
+			"bunx markuplint --config tools/lint/.markuplintrc.yml src/**/*.tsx",
+			"markuplint",
+		),
+		runCommand(
+			"bunx prettier --config tools/lint/.prettierrc --ignore-path tools/lint/.prettierignore -w ./**/*.css",
+			"prettier",
+		),
+	]);
+
+	const errors = results.filter((result) => result.status === "rejected");
+
+	if (errors.length > 0) {
+		console.error("エラーが発生しました:");
+		for (const [index, error] of errors.entries()) {
+			if ("reason" in error && error.reason instanceof Error) {
+				console.error(`エラー ${index + 1}: ${error.reason.message}`);
+			}
+		}
+	} else {
+		console.log("ok 👍");
 	}
 }
 
