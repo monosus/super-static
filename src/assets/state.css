@@ -5,6 +5,15 @@
     background-image: unset;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none;
+      transition: none;
+    }
+  }
+
   [data-ui='modal'] {
     position: fixed;
     top: 0;
