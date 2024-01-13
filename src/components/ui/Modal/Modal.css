@@ -1,7 +1,7 @@
 @layer ui {
   dialog {
     overflow: auto;
-    width: min(70vw, var(--modal-width));
+    width: var(--modal-width);
     max-height: var(--modal-height);
     margin: auto;
     inset: 0;
