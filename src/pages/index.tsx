@@ -4,7 +4,6 @@ export const metadata: Metadata = {
 	title: "Home",
 };
 const dialogId = "test";
-const dialogId2 = "dummy";
 
 export default function () {
 	return (
@@ -49,16 +48,6 @@ export default function () {
 			</button>
 			<div style={{ height: "60vh" }} />
 			<HtmlAppendedLink href="/about">go about</HtmlAppendedLink>
-			<dialog id={dialogId}>
-				<span>dialog</span>
-				<button type="button" popoverTarget="dummy">
-					close dialog
-				</button>
-				<a href="http://" target="_blank" rel="noopener noreferrer">
-					link
-				</a>
-			</dialog>
-			<span>forfirefox</span>
 		</>
 	);
 }
