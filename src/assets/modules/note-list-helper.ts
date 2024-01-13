@@ -17,16 +17,11 @@ export function noteListHelper() {
 	// Use a for...of loop to iterate over the NodeList
 	for (const listItem of listItems) {
 		// Get the value of the 'data-annot' attribute
-		const annotValue = listItem.dataset.annotation || "";
-
-		// Calculate the length of the 'data-annot' value in 'em' units
-		const emValue = calculateEmLength(annotValue);
-
-		// Assign the calculated 'em' value to a CSS variable for this specific list item
-		listItem.style.setProperty("--annotation-size", emValue);
-
-		// If the length is 0, also set --annot-gap to 0
-		if (emValue === "0") {
+		const annotValue = listItem.dataset.annotation;
+		if (annotValue) {
+			const emValue = calculateEmLength(annotValue);
+			listItem.style.setProperty("--annotation-size", emValue);
+		} else {
 			listItem.style.setProperty("--annotation-spacing", "0");
 		}
 	}
