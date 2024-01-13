@@ -1,0 +1,19 @@
+@layer ui {
+  .note-list > [data-annotation] {
+    --annotation-size: 1em; /* 注釈のサイズ */
+    --annotation-spacing: 0.5em; /* 注釈の間隔 */
+    --annotation-total-width: calc(var(--annotation-size) + var(--annotation-spacing)); /* 注釈の全体の幅 */
+
+    padding-left: var(--annotation-total-width);
+    text-indent: calc(var(--annotation-total-width) * -1);
+
+    &::before {
+      margin-right: var(--annotation-spacing);
+      content: attr(data-annotation);
+    }
+  }
+}
+
+@layer state {
+  /* If this component has state */
+}
