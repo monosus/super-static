@@ -20,10 +20,14 @@ window.addEventListener("load", async () => {
 	}
 	if (document.querySelector("li[data-annotation]")) {
 		// Dynamically import the module
-		import("./modules/note-list-helper").then((module) => {
-			// Apply styles
-			module.noteListHelper();
-		});
+		try {
+			import("./modules/note-list-helper").then((module) => {
+				// Apply styles
+				module.noteListHelper();
+			});
+		} catch (error) {
+			console.error("Failed to load note-list-helper module:", error);
+		}
 	}
 });
 
