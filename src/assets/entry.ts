@@ -18,6 +18,13 @@ window.addEventListener("load", async () => {
 	}
 	if (document.querySelector(".modal")) {
 	}
+	if (document.querySelector("li[data-annotation]")) {
+		// Dynamically import the module
+		import("./modules/note-list-helper").then((module) => {
+			// Apply styles
+			module.noteListHelper();
+		});
+	}
 });
 
 window.addEventListener("htmx:afterSwap", async (e: Event) => {
