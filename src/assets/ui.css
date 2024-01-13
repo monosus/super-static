@@ -1,2 +1,3 @@
 @import '/src/assets/_css/extends.css' layer(ui);
 @import '/src/components/ui/Modal/Modal.css';
+@import '/src/components/ui/NoteList/NoteList.css';
