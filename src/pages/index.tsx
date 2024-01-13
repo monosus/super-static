@@ -4,7 +4,17 @@ import HtmlAppendedLink from "~/components/utils/HtmlAppendedLink";
 export const metadata: Metadata = {
 	title: "Home",
 };
-const dialogId = "test";
+
+const noteData = [
+	"test1 test1 test1 test1 test1 test1 test1 test1 test1 test1 test1",
+	<>
+		test2
+		<br />
+		test
+	</>,
+	"test3",
+	"test4",
+];
 
 export default function () {
 	return (
@@ -14,18 +24,7 @@ export default function () {
 				Quick Shop
 			</button>
 			<div style={{ width: "15ch" }}>
-				<NoteList prefix="注">
-					{[
-						"test1 test1 test1 test1 test1 test1 test1 test1 test1 test1 test1",
-						<>
-							test2
-							<br />
-							test
-						</>,
-						"test3",
-						"test4",
-					]}
-				</NoteList>
+				<NoteList prefix="注">{noteData}</NoteList>
 				<NoteList prefix="注">
 					test1 test1 test1 test1 test1 test1 test1 test1 test1 test1 test1
 				</NoteList>
