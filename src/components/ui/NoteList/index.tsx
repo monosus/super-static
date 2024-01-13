@@ -7,8 +7,8 @@ type NoteListProps = {
 };
 
 const NoteList = ({ children, prefix }: NoteListProps) => {
-	const isSingleChild = React.Children.count(children) === 1;
 	const childArray = React.Children.toArray(children);
+	const isSingleChild = childArray.length === 1;
 	return (
 		<ul className="note-list">
 			{childArray.map((child, index) => (
