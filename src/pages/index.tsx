@@ -1,4 +1,5 @@
 import type { Metadata } from "minista";
+import { NoteList } from "~/components";
 import HtmlAppendedLink from "~/components/utils/HtmlAppendedLink";
 export const metadata: Metadata = {
 	title: "Home",
@@ -12,6 +13,23 @@ export default function () {
 			<button popoverTarget="candle-01" type="button">
 				Quick Shop
 			</button>
+			<div style={{ width: "15ch" }}>
+				<NoteList prefix="注">
+					{[
+						"test1 test1 test1 test1 test1 test1 test1 test1 test1 test1 test1",
+						<>
+							test2
+							<br />
+							test
+						</>,
+						"test3",
+						"test4",
+					]}
+				</NoteList>
+				<NoteList prefix="注">
+					test1 test1 test1 test1 test1 test1 test1 test1 test1 test1 test1
+				</NoteList>
+			</div>
 			<div style={{ height: "60vh" }} />
 			<div popover="auto" id="candle-01" data-modal="true">
 				<button
