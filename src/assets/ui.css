@@ -1,3 +1,25 @@
 @import '/src/assets/_css/extends.css' layer(ui);
 @import '/src/components/ui/Modal/Modal.css';
 @import '/src/components/ui/NoteList/NoteList.css';
+
+.button {
+  @layer ui.base {
+    padding: calc(var(--line-height) / 4 * 1em) var(--font-size);
+    border: 1px solid #fff;
+    border-radius: var(--buton-border-radius);
+    background-color: #000;
+    color: #fff;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
+
+  @layer ui.state {
+    transition: filter 0.2s ease-in-out;
+
+    @media (hover: hover) {
+      &:hover {
+        filter: invert(100%);
+      }
+    }
+  }
+}

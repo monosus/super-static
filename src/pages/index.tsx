@@ -20,7 +20,7 @@ export default function () {
 	return (
 		<>
 			<h1>index</h1>
-			<button popoverTarget="candle-01" type="button">
+			<button popoverTarget="candle-01" type="button" className="button">
 				Quick Shop
 			</button>
 			<div style={{ width: "15ch" }}>
